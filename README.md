@@ -1,1 +1,0 @@
-# CaseStudy_QA_SIM
