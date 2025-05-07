@@ -79,7 +79,32 @@ Sebuah aplikasi memiliki halaman login dengan input:
 - Tombol "Login"
   
 ### Tugas
-- Sepuluh test case untuk halaman login (dengan format: Test Case ID, Deskripsi,
-Langkah, Input, Expected Result).
-- Tiga skenario untuk negative testing.
-- Dua skenario boundary testing untuk field password.
+#### 1. Sepuluh test case untuk halaman login (dengan format: Test Case ID, Deskripsi, Langkah, Input, Expected Result).
+
+| **Test Case ID** | **Deskripsi** | **Langkah Eksekusi** | **Input** | **Expected Result** |
+|------------------|--------------|----------------------|-----------|---------------------|
+| TC001 | Login dengan kredensial yang valid | Masukkan email dan password yang benar, lalu klik tombol "Login" | Email: `user@example.com` <br> Password: `Pass1234` | Pengguna berhasil masuk dan diarahkan ke halaman dashboard |
+| TC002 | Login menggunakan email yang tidak case-sensitive | Masukkan email dengan kombinasi huruf besar dan kecil, lalu klik "Login" | Email: `USER@EXAMPLE.COM` <br> Password: `Pass1234` | Login berhasil karena email tidak case-sensitive |
+| TC003 | Login menggunakan password yang case-sensitive | Masukkan password dengan kombinasi huruf besar dan kecil sesuai yang terdaftar, lalu klik "Login" | Email: `user@example.com` <br> Password: `Pass1234` | Login berhasil jika password cocok, jika tidak muncul pesan error |
+| TC004 | Validasi bahwa login dapat dilakukan dengan password yang memenuhi panjang minimum | Masukkan email valid dan password dengan panjang minimal 8 karakter, lalu klik "Login" | Email: `user@example.com` <br> Password: `Abcd1234` | Login berhasil jika password memenuhi aturan panjang minimum |
+| TC005 | Validasi masking karakter pada input password | Masukkan password ke dalam kolom input | Password: `Pass1234` | Karakter ditampilkan sebagai titik atau bintang untuk keamanan |
+| TC006 | Login menggunakan email yang mengandung angka | Masukkan email dengan angka lalu klik "Login" | Email: `user123@example.com` <br> Password: `Pass1234` | Login berhasil jika akun terdaftar |
+| TC007 | Login menggunakan email dengan domain berbeda | Masukkan email dengan domain yang berbeda lalu klik "Login" | Email: `user@gmail.com` <br> Password: `Pass1234` | Login berhasil jika akun terdaftar |
+| TC008 | Pastikan tombol "Login" aktif setelah mengisi semua field | Masukkan email dan password, lalu amati apakah tombol "Login" aktif | Email: `user@example.com` <br> Password: `Pass1234` | Tombol "Login" aktif setelah kedua field terisi |
+| TC009 | Validasi fungsi "Enter" pada keyboard untuk submit login | Masukkan email dan password, lalu tekan tombol "Enter" | Email: `user@example.com` <br> Password: `Pass1234` | Login berhasil dan pengguna diarahkan ke halaman dashboard |
+| TC010 | Redirect setelah login berhasil | Masukkan email dan password yang valid lalu klik "Login" | Email: `user@example.com` <br> Password: `Pass1234` | Pengguna dialihkan ke halaman dashboard atau home setelah login sukses |
+
+#### 2. Tiga skenario untuk negative testing.
+
+| **Test Case ID** | **Deskripsi** | **Langkah Eksekusi** | **Input** | **Expected Result** |
+|------------------|---------------|----------------------|-----------|---------------------|
+| TC011 | Validasi format email yang tidak sesuai | Masukkan email tanpa karakter "@" dan password valid, lalu klik tombol "Login" | Email: `userexample.com` <br> Password: `Pass1234` | Muncul pesan error: **"Format email tidak valid"** |
+| TC012 | Login dengan password yang salah | Masukkan email valid tetapi password salah, lalu klik tombol "Login" | Email: `user@example.com` <br> Password: `salah123` | Muncul pesan error: **"Email atau password salah"** |
+| TC013 | Login dengan email yang tidak terdaftar | Masukkan email yang belum terdaftar tetapi dengan password valid, lalu klik tombol "Login" | Email: `tidakada@example.com` <br> Password: `Pass1234` | Muncul pesan error: **"Akun tidak ditemukan"** |
+
+#### 3. Dua skenario boundary testing untuk field password.
+
+| **Test Case ID** | **Deskripsi** | **Langkah Eksekusi** | **Input** | **Expected Result** |
+|------------------|---------------|----------------------|-----------|---------------------|
+| TC014 | Validasi login dengan password di bawah batas minimum | Masukkan email valid dan password dengan hanya 1 karakter, lalu klik tombol "Login" | Email: `user@example.com` <br> Password: `a` | Muncul pesan error: **"Password terlalu pendek"** |
+| TC015 | Validasi login dengan password pada batas maksimum yang diizinkan | Masukkan email valid dan password dengan 20 karakter, lalu klik tombol "Login" | Email: `user@example.com` <br> Password: `Abcdefghijklmnopqr12` | Login berhasil jika password memenuhi aturan panjang maksimum |
