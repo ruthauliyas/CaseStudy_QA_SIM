@@ -108,3 +108,9 @@ Sebuah aplikasi memiliki halaman login dengan input:
 |------------------|---------------|----------------------|-----------|---------------------|
 | TC014 | Validasi login dengan password di bawah batas minimum | Masukkan email valid dan password dengan hanya 1 karakter, lalu klik tombol "Login" | Email: `user@example.com` <br> Password: `a` | Muncul pesan error: **"Password terlalu pendek"** |
 | TC015 | Validasi login dengan password pada batas maksimum yang diizinkan | Masukkan email valid dan password dengan 20 karakter, lalu klik tombol "Login" | Email: `user@example.com` <br> Password: `Abcdefghijklmnopqr12` | Login berhasil jika password memenuhi aturan panjang maksimum |
+
+
+## Bonus Soal
+### Skrip pengujian menggunakan Cypress untuk memverifikasi form login dengan memanfaatkan tutorial dan real-world example cypress
+![Hasil test](https://github.com/ruthauliyas/CaseStudy_QA_SIM/blob/main/Result%20Task%20Bonus.png)
+
